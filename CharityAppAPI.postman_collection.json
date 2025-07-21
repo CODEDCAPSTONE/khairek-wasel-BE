@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "charity-app-collection-001",
+    "name": "Charity App API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St\",\n  \"location\": \"City\",\n  \"password\": \"password123\",\n  \"language\": \"en\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/users/register", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users", "register"] }
+      }
+    },
+    {
+      "name": "Register User (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"أحمد\",\n  \"email\": \"ahmed@example.com\",\n  \"phone\": \"0987654321\",\n  \"address\": \"شارع النصر\",\n  \"location\": \"المدينة\",\n  \"password\": \"كلمةالسر\",\n  \"language\": \"ar\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/users/register", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users", "register"] }
+      }
+    },
+    {
+      "name": "Login (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"language\": \"en\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/users/login", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users", "login"] }
+      }
+    },
+    {
+      "name": "Login (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"ahmed@example.com\",\n  \"password\": \"كلمةالسر\",\n  \"language\": \"ar\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/users/login", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users", "login"] }
+      }
+    },
+    {
+      "name": "Provide Food (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Rice", "type": "text" },
+            { "key": "description", "value": "A bag of rice", "type": "text" },
+            { "key": "location", "value": "City", "type": "text" },
+            { "key": "language", "value": "en", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/food/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["food", "provide"] }
+      }
+    },
+    {
+      "name": "Provide Food (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "أرز", "type": "text" },
+            { "key": "description", "value": "كيس أرز", "type": "text" },
+            { "key": "location", "value": "المدينة", "type": "text" },
+            { "key": "language", "value": "ar", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/food/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["food", "provide"] }
+      }
+    },
+    {
+      "name": "Provide Clothes (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Jacket", "type": "text" },
+            { "key": "description", "value": "Winter jacket", "type": "text" },
+            { "key": "location", "value": "City", "type": "text" },
+            { "key": "language", "value": "en", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/clothes/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["clothes", "provide"] }
+      }
+    },
+    {
+      "name": "Provide Clothes (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "معطف", "type": "text" },
+            { "key": "description", "value": "معطف شتوي", "type": "text" },
+            { "key": "location", "value": "المدينة", "type": "text" },
+            { "key": "language", "value": "ar", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/clothes/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["clothes", "provide"] }
+      }
+    },
+    {
+      "name": "Provide Furniture (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Chair", "type": "text" },
+            { "key": "description", "value": "Wooden chair", "type": "text" },
+            { "key": "location", "value": "City", "type": "text" },
+            { "key": "language", "value": "en", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/furniture/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["furniture", "provide"] }
+      }
+    },
+    {
+      "name": "Provide Furniture (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "كرسي", "type": "text" },
+            { "key": "description", "value": "كرسي خشبي", "type": "text" },
+            { "key": "location", "value": "المدينة", "type": "text" },
+            { "key": "language", "value": "ar", "type": "text" },
+            { "key": "image", "type": "file" }
+          ]
+        },
+        "url": { "raw": "http://localhost:8001/furniture/provide", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["furniture", "provide"] }
+      }
+    },
+    {
+      "name": "Send Notification (EN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"providerEmail\": \"john@example.com\",\n  \"itemType\": \"food\",\n  \"itemId\": \"1\",\n  \"message\": \"You have a new reservation!\",\n  \"language\": \"en\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/notifications/send", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["notifications", "send"] }
+      }
+    },
+    {
+      "name": "Send Notification (AR)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"providerEmail\": \"ahmed@example.com\",\n  \"itemType\": \"food\",\n  \"itemId\": \"1\",\n  \"message\": \"لديك حجز جديد!\",\n  \"language\": \"ar\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/notifications/send", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["notifications", "send"] }
+      }
+    }
+  ]
+}
