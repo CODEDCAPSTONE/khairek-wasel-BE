@@ -45,7 +45,7 @@ export const provideClothes = async (req: Request, res: Response): Promise<void>
 
 export const listClothesForReceptor = async (req: Request, res: Response): Promise<void> => {
   try {
-    const items = await Clothes.find()
+    const items = await Clothes.find({ status: 'available' })
       .sort({ createdAt: -1 })
       .populate('provider', 'name email')   // populate only name & email
       .populate('receiver', 'name email');  // if receiver is assigned
@@ -57,9 +57,9 @@ export const listClothesForReceptor = async (req: Request, res: Response): Promi
   
 };
   export const updateClothesReceiver = async (req: Request, res: Response): Promise<void> => {
-  const { itemId, receiverId } = req.body;
+  const { itemId, receiver } = req.body;
 
-  if (!itemId || !receiverId) {
+  if (!itemId || !receiver) {
     res.status(400).json({ message: getMsg('allFields', 'en') });
     return;
   }
@@ -68,7 +68,7 @@ export const listClothesForReceptor = async (req: Request, res: Response): Promi
     const updatedItem = await Clothes.findByIdAndUpdate(
       itemId,
       {
-        receiver: receiverId,
+        receiver: receiver,
         status: 'unavailable'
       },
       { new: true } // Return the updated document

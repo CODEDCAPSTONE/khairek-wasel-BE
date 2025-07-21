@@ -45,7 +45,7 @@ export const provideFurniture = async (req: Request, res: Response): Promise<voi
 
 export const listFurnitureForReceptor = async (req: Request, res: Response): Promise<void> => {
   try {
-    const items = await Furniture.find()
+    const items = await Furniture.find({ status: 'available' })
       .sort({ createdAt: -1 })
       .populate('provider', 'name email')   // populate only name & email
       .populate('receiver', 'name email');  // if receiver is assigned
@@ -84,9 +84,9 @@ export const listMyFurnitureDonations = async (req: Request, res: Response): Pro
   }
 };
  export const updateFurnitureReceiver = async (req: Request, res: Response): Promise<void> => {
-  const { itemId, receiverId } = req.body;
+  const { itemId, receiver } = req.body;
 
-  if (!itemId || !receiverId) {
+  if (!itemId || !receiver) {
     res.status(400).json({ message: getMsg('allFields', 'en') });
     return;
   }
@@ -95,7 +95,7 @@ export const listMyFurnitureDonations = async (req: Request, res: Response): Pro
     const updatedItem = await Furniture.findByIdAndUpdate(
       itemId,
       {
-        receiver: receiverId,
+        receiver: receiver,
         status: 'unavailable'
       },
       { new: true } // Return the updated document

@@ -46,7 +46,7 @@ export const provideFood = async (req: Request, res: Response): Promise<void> =>
 
 export const listFoodForReceptor = async (req: Request, res: Response): Promise<void> => {
   try {
-    const items = await Food.find()
+    const items = await Food.find({ status: 'available' })
       .sort({ createdAt: -1 })
       .populate('provider', 'name email')   // populate only name & email
       .populate('receiver', 'name email');  // if receiver is assigned

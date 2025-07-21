@@ -109,25 +109,25 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
 };
 
 export const getProfile = async (req: Request, res: Response): Promise<void> => {
-  const { email, language } = req.query;
-  const lang = language === 'ar' ? 'ar' : 'en';
+  //const { email, language } = req.query;
+  //const lang = language === 'ar' ? 'ar' : 'en';
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ _id:(req as any).user?.userId });
     if (!user) {
-      res.status(404).json({ message: getMsg('notFound', lang) });
+      res.status(404).json({ message: getMsg('notFound', 'en') });
       return;
     }
     res.json({  email: user.email, type: user.type,image: user.image, language: user.language });
   } catch (err) {
-    res.status(500).json({ message: getMsg('error', lang) });
+    res.status(500).json({ message: getMsg('error', 'en') });
   }
 };
 
 export const updateSettings = async (req: Request, res: Response): Promise<void> => {
-  const { email, language } = req.body;
+  const {  language } = req.body;
   const lang = language === 'ar' ? 'ar' : 'en';
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ _id:(req as any).user?.userId });
     if (!user) {
       res.status(404).json({ message: getMsg('notFound', lang) });
       return;
