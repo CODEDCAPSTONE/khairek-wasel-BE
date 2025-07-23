@@ -10,9 +10,10 @@ import foodRoutes from "./api/items/food.routes";
 import clothesRoutes from "./api/items/clothes.routes";
 import furnitureRoutes from "./api/items/furniture.routes";
 import notificationsRoutes from "./api/notifications/notifications.routes";
-
+import dotenv from "dotenv"
+dotenv.config()
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
